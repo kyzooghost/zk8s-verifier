@@ -4,4 +4,4 @@ Build - `forge build`
 
 test - `forge test`
 
-Deploy - `bash script/deploy.sh`
+Deploy - `bash scripts/deploy.sh`

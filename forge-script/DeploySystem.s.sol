@@ -34,7 +34,7 @@ contract DeploySystem is Script {
     RiscZeroGroth16Verifier riscZeroVerifier;
 
     function run() public {
-        vm.broadcast(deployerKey);
+        vm.startBroadcast(deployerKey);
 
         _deployP256();
         EnclaveIdentityHelper enclaveIdHelper = new EnclaveIdentityHelper();
@@ -73,6 +73,7 @@ contract DeploySystem is Script {
 
         ZK8SVerifier zk8sVerifier = new ZK8SVerifier(address(riscZeroVerifier), riscZeroImageId);
         console.log("ZK8sVerifier deployed at: ", address(zk8sVerifier));
+        zk8sVerifier.setQuoteVerifier(address(verifier));
 
         vm.stopBroadcast();
     }
