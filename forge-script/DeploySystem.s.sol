@@ -7,7 +7,7 @@ import "../contracts/verifiers/V4QuoteVerifier.sol";
 import "../contracts/PCCSRouter.sol";
 import {RiscZeroGroth16Verifier} from "risc0/groth16/RiscZeroGroth16Verifier.sol";
 import "../contracts/ZK8sVerifier.sol";
-import "../contracts/utils/P256VerifierCore.sol";
+// import "../contracts/utils/P256VerifierCore.sol";
 
 import {
     EnclaveIdentityJsonObj,
@@ -65,8 +65,8 @@ contract DeploySystem is Script {
 
         pcsDaoUpserts(pcsDao);
 
-        P256VerifierCore p256VerifierCore = new P256VerifierCore();
-        V4QuoteVerifier verifier = new V4QuoteVerifier(address(router), address(p256VerifierCore));
+        // P256VerifierCore p256VerifierCore = new P256VerifierCore();
+        V4QuoteVerifier verifier = new V4QuoteVerifier(address(router));
         console.log("V4QuoteVerifier deployed at ", address(verifier));
 
         riscZeroVerifier = new RiscZeroGroth16Verifier(CONTROL_ROOT, BN254_CONTROL_ID);
